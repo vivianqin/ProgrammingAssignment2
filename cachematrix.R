@@ -4,8 +4,8 @@
 makeCacheMatrix <- function(x = matrix()) {
   theInverseMatrix <- NULL
   set <- function(y) {
-    x <<- y
-    theInverseMatrix <<- NULL
+      x <<- y
+      theInverseMatrix <<- NULL
   }
   get <- function() x
   setsolve <- function(solve) theInverseMatrix <<- solve
@@ -15,20 +15,20 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
-## again, revise the example code to invert the matrix and then cache it, Also return Null when new data is introduced  
+## again, revise the example code to invert the matrix and then cache it. Also need to confirm the data type and if it is a matrix. 
 
 cacheSolve <- function(x, ...) {
    MyMatrix <- x$getsolve()
    if (!is.null(MyMatrix)) {
-    message("get data")
-    return(MyMatrix)
+       message("get data")
+       return(MyMatrix)
   }
-    data <- x$get()
-    if (!is.matrix(data)) {
-    stop("invalid matrix")
+   data <- x$get()
+   if (!is.matrix(data)) {
+       stop("stop because of invalid matrix")
   }
-    MyMatrix <- solve(data)
-    x$setsolve(MyMatrix)
-    MyMatrix
+   MyMatrix <- solve(data)
+   x$setsolve(MyMatrix)
+   MyMatrix
 }
 
